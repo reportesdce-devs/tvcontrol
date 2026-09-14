@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCE Display</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="display-page">
+  <main class="display-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">DCE</div>
+        <div>
+          <strong>División de Ciencias Exactas</strong>
+          <span>IEST Anáhuac</span>
+        </div>
+      </div>
+      <div class="clock-panel">
+        <strong id="clock">--:--</strong>
+        <span id="date">--</span>
+      </div>
+    </header>
+
+    <section class="hero-card" id="heroCard">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="eyebrow" id="category">EVENTO</span>
+        <h1 id="title">INGENIA 2026</h1>
+        <p id="description">Innovación, ingeniería y proyectos de la División de Ciencias Exactas.</p>
+
+        <div class="display-footer">
+          <div>
+            <div class="status" id="modeStatus">
+              <span class="status-dot"></span>
+              <span id="modeText">Modo automático</span>
+            </div>
+            <small id="statusText">Siguiente contenido en <b id="autoSeconds">10</b> s</small>
+          </div>
+
+          <div class="qr-zone">
+            <div>
+              <strong>¿Quieres explorar?</strong>
+              <span>Escanea el QR</span>
+            </div>
+            <a class="fake-qr" href="control.html" aria-label="Abrir control remoto">
+              <span></span><span></span><span></span><span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="dots" id="dots" aria-label="Contenido del carrusel"></nav>
+
+    <section class="simulation-note">
+      <strong>Simulación GitHub Pages</strong>
+      <span>Abre <code>control.html</code> en otra pestaña o dispositivo. En esta versión demo, ambas vistas se sincronizan únicamente si están abiertas en el mismo navegador/origen.</span>
+    </section>
+  </main>
+
+  <script src="js/content.js"></script>
+  <script src="js/display.js"></script>
+</body>
+</html>

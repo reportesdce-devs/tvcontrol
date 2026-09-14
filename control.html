@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control DCE Display</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="control-page">
+  <main class="phone-shell">
+    <section class="control-header">
+      <span class="eyebrow dark">CONTROL REMOTO</span>
+      <h1>DCE Display</h1>
+      <p>Control temporal del monitor del pasillo.</p>
+    </section>
+
+    <section id="connectPanel" class="panel">
+      <div class="control-icon">↗</div>
+      <h2>Conectar al display</h2>
+      <p>En la versión final este paso se activará al escanear el QR dinámico del monitor.</p>
+      <button id="connectBtn" class="primary">Iniciar sesión</button>
+    </section>
+
+    <section id="remotePanel" class="panel hidden">
+      <div class="session-row">
+        <div>
+          <span class="label">Display</span>
+          <strong>DCE-01</strong>
+        </div>
+        <div class="timer-box">
+          <span>Sesión</span>
+          <strong id="timer">02:00</strong>
+        </div>
+      </div>
+
+      <div class="progress"><div id="timerBar"></div></div>
+
+      <div class="direction-grid">
+        <button id="prevBtn" class="secondary">← Anterior</button>
+        <button id="nextBtn" class="secondary">Siguiente →</button>
+      </div>
+
+      <div class="section-title">Explorar</div>
+      <div id="contentButtons" class="content-grid"></div>
+
+      <button id="homeBtn" class="ghost">Regresar al inicio</button>
+      <button id="endBtn" class="danger">Finalizar control</button>
+
+      <p class="hint">Cada interacción reinicia el tiempo. Si no hay actividad, el display regresa automáticamente al modo carrusel.</p>
+    </section>
+  </main>
+
+  <script src="js/content.js"></script>
+  <script src="js/control.js"></script>
+</body>
+</html>
