@@ -3,170 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DCE Display Interactivo</title>
+<title>DCE Display | IEST Anáhuac</title>
 <style>
-:root{
+:root {
   --orange:#e85d04;
   --orange2:#f48c06;
-  --black:#0d0f12;
-  --black2:#181b20;
+  --gold:#ffb703;
+  --ink:#0d0f12;
+  --ink2:#171a20;
   --white:#fff;
   --muted:#a9adb5;
   --line:rgba(255,255,255,.12);
-  --paper:#f4f4f2;
-  --ink:#121418;
+  --green:#7be08d;
 }
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:Inter,Segoe UI,Arial,sans-serif}
-body{background:var(--black);color:white}
-button,a{font:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
-
-/* DISPLAY */
-.display-wrap{
-  min-height:100vh;
-  display:grid;
-  grid-template-rows:auto 1fr auto;
-  gap:18px;
-  padding:24px 34px;
-}
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-}
+body{background:#090b0e;color:#fff;overflow:hidden}
+.display{height:100vh;padding:22px 30px;display:grid;grid-template-rows:auto 1fr auto;gap:16px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:20px}
 .brand{display:flex;align-items:center;gap:14px}
-.logo-box{
-  width:56px;height:56px;border:2px solid var(--orange2);
-  display:grid;place-items:center;font-weight:900;letter-spacing:.08em;color:var(--orange2)
-}
+.brand-badge{width:60px;height:60px;border:2px solid var(--orange2);display:grid;place-items:center;font-weight:900;letter-spacing:.08em;color:var(--orange2)}
 .brand strong,.brand span{display:block}
-.brand span{font-size:.85rem;color:#9ca0a8;margin-top:4px}
+.brand strong{font-size:1rem}
+.brand span{color:#8f949e;font-size:.82rem;margin-top:4px}
 .clock{text-align:right}
-.clock strong{font-size:2rem;display:block}
-.clock span{font-size:.8rem;color:#9ca0a8}
-.stage{
-  position:relative;
-  min-height:70vh;
-  border-radius:30px;
-  overflow:hidden;
-  background:
-  radial-gradient(circle at 80% 16%,rgba(244,140,6,.42),transparent 28%),
-  radial-gradient(circle at 90% 90%,rgba(232,93,4,.22),transparent 28%),
-  linear-gradient(120deg,#15171b,#262a31 55%,#101216);
-}
-.stage:after{
-  content:"";position:absolute;right:-8%;bottom:-32%;
-  width:46%;aspect-ratio:1;border-radius:50%;
-  border:72px solid rgba(255,255,255,.035)
-}
-.stage-inner{
-  position:relative;z-index:2;min-height:70vh;padding:50px;
-  display:flex;flex-direction:column;justify-content:center;
-}
-.eyebrow{
-  color:#ffc078;font-size:.72rem;font-weight:800;
-  letter-spacing:.24em;text-transform:uppercase
-}
-.stage h1{
-  margin:16px 0 18px;font-size:clamp(3.2rem,7.5vw,7.5rem);
-  line-height:.9;letter-spacing:-.06em;max-width:1050px
-}
-.stage p{
-  margin:0;max-width:760px;color:rgba(255,255,255,.72);
-  font-size:clamp(1rem,1.7vw,1.45rem);line-height:1.55
-}
-.stage-footer{
-  margin-top:auto;padding-top:36px;
-  display:flex;justify-content:space-between;align-items:flex-end;gap:24px
-}
-.status{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.status-dot{
-  width:9px;height:9px;border-radius:50%;background:#7be08d;
-  box-shadow:0 0 0 5px rgba(123,224,141,.1)
-}
-.status small{color:#a9adb5}
-.qr-block{display:flex;align-items:center;gap:14px}
+.clock strong{display:block;font-size:2rem}
+.clock span{display:block;color:#858a94;font-size:.78rem;text-transform:capitalize}
+.stage{position:relative;overflow:hidden;border-radius:30px;background:linear-gradient(120deg,#15171b,#242932 58%,#0c0e12);min-height:0}
+.stage::before{content:"";position:absolute;inset:0;background:
+radial-gradient(circle at 82% 15%,rgba(244,140,6,.48),transparent 27%),
+radial-gradient(circle at 95% 80%,rgba(232,93,4,.20),transparent 28%)}
+.stage::after{content:"";position:absolute;right:-10%;bottom:-35%;width:48%;aspect-ratio:1;border-radius:50%;border:75px solid rgba(255,255,255,.03)}
+.stage-inner{position:relative;z-index:2;height:100%;padding:46px 52px;display:flex;flex-direction:column}
+.tag{display:inline-flex;align-items:center;gap:8px;width:max-content;color:#ffc078;font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
+.hero-copy{margin:auto 0}
+.hero-copy h1{margin:14px 0 18px;font-size:clamp(3.2rem,7vw,7.2rem);line-height:.9;letter-spacing:-.06em;max-width:1100px}
+.hero-copy p{margin:0;max-width:800px;color:rgba(255,255,255,.72);font-size:clamp(1rem,1.5vw,1.4rem);line-height:1.55}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.meta{padding:9px 12px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.04);font-size:.78rem;color:#d7dae0}
+.bottom-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.status{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.status-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(123,224,141,.1)}
+.status strong{font-size:.92rem}
+.status-text{color:#8e939c;font-size:.78rem}
+.qr-wrap{display:flex;align-items:center;gap:14px}
 .qr-copy{text-align:right}
 .qr-copy strong,.qr-copy span{display:block}
-.qr-copy span{font-size:.78rem;color:#a9adb5;margin-top:3px}
-.qr{
-  width:92px;height:92px;background:#fff;border-radius:12px;padding:8px;
-  display:grid;grid-template-columns:1fr 1fr;gap:5px;text-decoration:none
-}
-.qr span{background:#111;border-radius:2px}
-.dots{display:flex;justify-content:center;gap:8px}
-.dot{width:9px;height:9px;border-radius:20px;background:#3d4148}
+.qr-copy span{color:#969ba5;font-size:.78rem;margin-top:4px;max-width:230px}
+.qr-card{width:110px;height:110px;background:#fff;border-radius:16px;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.qr-card img{width:100%;height:100%;display:block}
+.footer{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.dots{display:flex;gap:8px;align-items:center}
+.dot{width:9px;height:9px;border-radius:999px;background:#333840;transition:.25s}
 .dot.active{width:34px;background:var(--orange2)}
-.note{
-  text-align:center;color:#70747c;font-size:.72rem
-}
-
-/* CONTROL */
-.control-page{
-  min-height:100vh;background:var(--paper);color:var(--ink);padding:26px 16px
-}
-.phone{max-width:440px;margin:0 auto}
-.control-head{padding:16px 4px 20px}
-.control-head .eyebrow{color:var(--orange)}
-.control-head h1{font-size:2.35rem;letter-spacing:-.05em;margin:8px 0 6px}
-.control-head p{margin:0;color:#767a82}
-.panel{
-  background:white;border:1px solid #e3e3e5;border-radius:26px;padding:22px
-}
-.icon{
-  width:52px;height:52px;border-radius:16px;background:#fff1e5;
-  color:var(--orange);display:grid;place-items:center;font-weight:900;font-size:1.4rem
-}
-.panel h2{margin:18px 0 8px}
-.panel p{color:#767a82;line-height:1.5}
-.btn{
-  width:100%;min-height:52px;border-radius:15px;border:0;padding:13px 15px
-}
-.primary{background:#121418;color:white;margin-top:16px}
-.secondary{background:#f6f6f6;color:#121418;border:1px solid #e3e3e5}
-.ghost{background:#f4f4f4;color:#121418;margin-top:14px}
-.danger{background:#fff0f0;color:#a12626;margin-top:9px}
-.session-row{display:flex;justify-content:space-between;align-items:center}
-.label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#81858d}
-.timer{text-align:right}
-.timer strong{font-size:1.15rem}
-.progress{height:5px;background:#ececee;border-radius:999px;overflow:hidden;margin-top:14px}
-.progress div{height:100%;background:var(--orange);width:100%;transition:width 1s linear}
-.nav2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
-.section-title{
-  margin:22px 0 10px;color:#81858d;font-size:.73rem;
-  font-weight:800;letter-spacing:.12em;text-transform:uppercase
-}
-.content-list{display:grid;gap:9px}
-.content-btn{
-  width:100%;text-align:left;background:white;border:1px solid #e3e3e5;
-  border-radius:15px;padding:13px 15px;min-height:58px
-}
-.content-btn strong,.content-btn span{display:block}
-.content-btn span{font-size:.78rem;color:#7b7f87;margin-top:3px}
-.content-btn.active{border-color:var(--orange);background:#fff8f2}
-.hint{font-size:.78rem!important;margin:16px 2px 0!important}
-
-@media(max-width:700px){
-  .display-wrap{padding:14px}
-  .stage,.stage-inner{min-height:74vh}
+.footer-note{font-size:.72rem;color:#686d76}
+.session-banner{position:absolute;top:22px;right:22px;z-index:5;border:1px solid rgba(255,255,255,.12);background:rgba(14,16,20,.76);backdrop-filter:blur(12px);border-radius:16px;padding:12px 14px;min-width:220px}
+.session-banner.hidden{display:none}
+.session-banner .small{font-size:.68rem;color:#9ea3ac;text-transform:uppercase;letter-spacing:.1em}
+.session-banner strong{display:block;margin-top:4px}
+@media(max-width:900px){
+  body{overflow:auto}
+  .display{height:auto;min-height:100vh;padding:14px}
+  .stage{min-height:720px}
   .stage-inner{padding:28px}
-  .stage-footer{flex-direction:column;align-items:flex-start}
-  .qr-block{align-self:flex-end}
-  .note{display:none}
+  .bottom-row{align-items:flex-start;flex-direction:column}
+  .qr-wrap{align-self:flex-end}
 }
 </style>
 </head>
 <body>
-
-<!-- DISPLAY -->
-<div id="displayView" class="display-wrap">
+<div class="display">
   <header class="topbar">
     <div class="brand">
-      <div class="logo-box">DCE</div>
+      <div class="brand-badge">DCE</div>
       <div>
         <strong>División de Ciencias Exactas</strong>
         <span>IEST Anáhuac</span>
@@ -179,326 +88,197 @@ button{cursor:pointer}
   </header>
 
   <main class="stage">
-    <div class="stage-inner">
-      <span id="category" class="eyebrow">EVENTO</span>
-      <h1 id="title">INGENIA 2026</h1>
-      <p id="description">Innovación, ingeniería y proyectos desarrollados por estudiantes de la División de Ciencias Exactas.</p>
+    <div id="sessionBanner" class="session-banner hidden">
+      <div class="small">Sesión interactiva</div>
+      <strong id="sessionText">Control remoto conectado</strong>
+    </div>
 
-      <div class="stage-footer">
+    <div class="stage-inner">
+      <div id="category" class="tag">EVENTO DESTACADO</div>
+
+      <section class="hero-copy">
+        <h1 id="title">INGENIA 2026</h1>
+        <p id="description">Hackathon y encuentro de innovación de la División de Ciencias Exactas. Equipos multidisciplinarios desarrollan soluciones tecnológicas durante dos días.</p>
+        <div id="metaRow" class="meta-row">
+          <span class="meta">03–04 septiembre</span>
+          <span class="meta">Laboratorios DCE</span>
+          <span class="meta">Estudiantes de ingeniería</span>
+        </div>
+      </section>
+
+      <div class="bottom-row">
         <div>
           <div class="status">
             <span class="status-dot"></span>
             <strong id="modeText">Modo automático</strong>
           </div>
-          <small id="statusText">Siguiente contenido en <b id="autoCounter">10</b> s</small>
+          <div id="statusText" class="status-text">Siguiente contenido en <b id="countdown">12</b> s</div>
         </div>
 
-        <div class="qr-block">
+        <div class="qr-wrap">
           <div class="qr-copy">
             <strong>¿Quieres explorar?</strong>
-            <span>Escanea para controlar</span>
+            <span>Escanea y usa tu teléfono como control remoto temporal.</span>
           </div>
-          <a id="qrLink" class="qr" href="?mode=control" aria-label="Abrir control remoto">
-            <span></span><span></span><span></span><span></span>
+          <a class="qr-card" href="https://reportesdce-devs.github.io/control/" target="_blank" rel="noopener" aria-label="Abrir control remoto">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACtUlEQVR4nO2cUYrcMAyGPzWGPjrQA+xRkpuV3iw5yt4geRzwoD7IdpyFsl06k45Bfghx5nsQCFnSb3tE+cpYv30JB+edd/6p/C55zNxFZkDmPZA/jpQ3CdfY4/wDeVS3QVVVlUkTEFV1iXmqug3KpKrGLa9mv/N/w+fg3L8r0wYyA7rsAZERLMTnC+1x/jn8XQBQ3UDmmOzt/9nj/L/y4cNc2X8kgSEp+4hMS7rUHuefwatqdWNMWCZe3xKsEsg5+UJ7nH8kf7fyGBhU5j0Ae0B+vud0zFoq6de03/k/jwCxShw76DoONtF1RHR9S7QSyKvZ7/ynfO1155jAiqx4E4iqMlP63/kqe5x/II/1vktM6MJQu15sap2w5WTvfzvki38Zcq7NIschbZQ3K7JezX7nPxknhQrMtQuUgI3HD+7f/niLX7D4zZ4GhtIQkeUO1ye75GmjNlaZudGfsTU7p+NXs9/5T0Zenzcoj0HLD5R0DNn77t/O+LaMWmIyJeuI36N0thTt/u2Mb/qj7MGSektiLp2S598e+SI9x9Ik1dbIfE5sg9j92xvfaBlgWsZRTteqGe9/O+WLf5u93uJLq69KueXx2yXf+NdCd9KciU9KJd4f9cm38WtOtjFoE85VpHT/9sY34jIc9VWtuez03eb9b6f8aRvheGxFn7SVegPw9blDnlaQ3GrVXOK3UN7/dspnfUPLCWf72ARsca3Xz13y7QnYY5FeqIn5tLHk/u2RL/cX2AMyF2lD5C3V1ugusPv9lP54O/8sMCTy4x7y2y4wbWM+8w7pAnucfzK/SkCXeLPjdvprzCt1Pjj78vY7fxrn+wt3IYduwO4vwJCEeBOP34750hDlhCtzVM33j/QmTO8BmS+0x/lH8af6ufa/eae/9r/lzqjXz73x4v/P4Lzz3fK/AVHqdZy3NshlAAAAAElFTkSuQmCC" alt="Código QR para abrir el control remoto">
           </a>
         </div>
       </div>
     </div>
   </main>
 
-  <div id="dots" class="dots"></div>
-  <div class="note">Demo todo-en-uno · GitHub Pages · index.html</div>
-</div>
-
-<!-- CONTROL -->
-<div id="controlView" class="control-page hidden">
-  <main class="phone">
-    <section class="control-head">
-      <span class="eyebrow">CONTROL REMOTO</span>
-      <h1>DCE Display</h1>
-      <p>Control temporal del monitor del pasillo.</p>
-    </section>
-
-    <section id="connectPanel" class="panel">
-      <div class="icon">↗</div>
-      <h2>Conectar al display</h2>
-      <p>Este acceso simula la sesión que se abrirá al escanear el QR del monitor.</p>
-      <button id="connectBtn" class="btn primary">Iniciar sesión</button>
-    </section>
-
-    <section id="remotePanel" class="panel hidden">
-      <div class="session-row">
-        <div>
-          <span class="label">Display</span>
-          <strong>DCE-01</strong>
-        </div>
-        <div class="timer">
-          <span class="label">Sesión</span>
-          <strong id="timer">02:00</strong>
-        </div>
-      </div>
-
-      <div class="progress"><div id="timerBar"></div></div>
-
-      <div class="nav2">
-        <button id="prevBtn" class="btn secondary">← Anterior</button>
-        <button id="nextBtn" class="btn secondary">Siguiente →</button>
-      </div>
-
-      <div class="section-title">Explorar</div>
-      <div id="contentList" class="content-list"></div>
-
-      <button id="homeBtn" class="btn ghost">Regresar al inicio</button>
-      <button id="endBtn" class="btn danger">Finalizar control</button>
-      <p class="hint">Cada interacción reinicia el tiempo. Al terminar, el display vuelve al carrusel automático.</p>
-    </section>
-  </main>
+  <footer class="footer">
+    <div id="dots" class="dots"></div>
+    <div class="footer-note">DCE Display · Demo GitHub Pages</div>
+  </footer>
 </div>
 
 <script>
 (() => {
+  // ========= CONFIGURACIÓN =========
+  // Para control REAL entre celular y TV, pega aquí tus datos de Supabase.
+  // Si se dejan vacíos, el display funciona como demo/carrusel, pero no se sincroniza entre dispositivos distintos.
+  const SUPABASE_URL = "";
+  const SUPABASE_ANON_KEY = "";
+  const DISPLAY_ID = "DCE-01";
+
   const CONTENT = [
     {
-      category:"EVENTO",
+      category:"EVENTO DESTACADO",
       title:"INGENIA 2026",
-      description:"Innovación, ingeniería y proyectos desarrollados por estudiantes de la División de Ciencias Exactas."
+      description:"Hackathon y encuentro de innovación de la División de Ciencias Exactas. Equipos multidisciplinarios desarrollan soluciones tecnológicas durante dos días.",
+      meta:["03–04 septiembre","Laboratorios DCE","Estudiantes de ingeniería"]
     },
     {
       category:"ISND",
       title:"Sistemas y Negocios Digitales",
-      description:"Software, datos, inteligencia artificial, innovación y transformación de negocios."
+      description:"Desarrollo de software, análisis de datos, inteligencia artificial, innovación y transformación de procesos de negocio.",
+      meta:["Software","IA y datos","Negocios digitales"]
     },
     {
-      category:"INGENIERÍAS",
-      title:"Cuatro carreras. Un mismo futuro.",
-      description:"Sistemas y Negocios Digitales · Industrial · Mecatrónica · Química."
+      category:"INGENIERÍA INDUSTRIAL",
+      title:"Diseña, optimiza y transforma",
+      description:"Procesos, logística, productividad, calidad y toma de decisiones para organizaciones más eficientes.",
+      meta:["Procesos","Logística","Calidad"]
     },
     {
-      category:"DCE",
-      title:"Conecta · Aprende · Participa",
-      description:"Conferencias, talleres, concursos, visitas industriales y experiencias académicas."
+      category:"INGENIERÍA MECATRÓNICA",
+      title:"Integra hardware y software",
+      description:"Automatización, robótica, control, sensores y sistemas inteligentes para resolver problemas reales.",
+      meta:["Robótica","Automatización","Control"]
+    },
+    {
+      category:"INGENIERÍA QUÍMICA",
+      title:"Ciencia aplicada a la industria",
+      description:"Procesos químicos, materiales, energía, sostenibilidad y transformación de materias primas.",
+      meta:["Procesos","Materiales","Sostenibilidad"]
+    },
+    {
+      category:"PRÓXIMAMENTE",
+      title:"Taller de Inteligencia Artificial",
+      description:"Sesión práctica sobre herramientas de IA generativa aplicadas al aprendizaje, investigación y productividad.",
+      meta:["Auditorio DCE","Registro abierto","Cupo limitado"]
     }
   ];
 
-  const params = new URLSearchParams(location.search);
-  const mode = params.get("mode");
-  const isControl = mode === "control";
+  let index = 0;
+  let autoSeconds = 12;
+  let interactive = false;
+  let sessionTimeout = null;
 
-  const displayView = document.getElementById("displayView");
-  const controlView = document.getElementById("controlView");
+  const $ = id => document.getElementById(id);
+  const dots = $("dots");
 
-  if (isControl) {
-    displayView.classList.add("hidden");
-    controlView.classList.remove("hidden");
+  CONTENT.forEach((_,i)=>{
+    const d=document.createElement("span");
+    d.className="dot";
+    d.dataset.i=i;
+    dots.appendChild(d);
+  });
+
+  function render(){
+    const item=CONTENT[index];
+    $("category").textContent=item.category;
+    $("title").textContent=item.title;
+    $("description").textContent=item.description;
+    $("metaRow").innerHTML=item.meta.map(x=>`<span class="meta">${x}</span>`).join("");
+    document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===index));
   }
 
-  function sendCommand(type, payload={}) {
-    const command = {
-      id: Date.now()+"-"+Math.random().toString(36).slice(2),
-      type,
-      ...payload
-    };
-    localStorage.setItem("dce_display_command", JSON.stringify(command));
+  function setInteractive(v){
+    interactive=v;
+    $("modeText").textContent=v?"Control remoto conectado":"Modo automático";
+    $("statusText").innerHTML=v
+      ?"El visitante está explorando el contenido."
+      :'Siguiente contenido en <b id="countdown">12</b> s';
+    $("sessionBanner").classList.toggle("hidden",!v);
   }
 
-  /* DISPLAY */
-  if (!isControl) {
-    let index = 0;
-    let autoSeconds = 10;
-    let interactive = false;
-    let lastCommandId = "";
-
-    const category = document.getElementById("category");
-    const title = document.getElementById("title");
-    const description = document.getElementById("description");
-    const modeText = document.getElementById("modeText");
-    const statusText = document.getElementById("statusText");
-    const dots = document.getElementById("dots");
-
-    function buildDots(){
-      CONTENT.forEach((_,i)=>{
-        const d=document.createElement("div");
-        d.className="dot";
-        d.dataset.i=i;
-        dots.appendChild(d);
-      });
-    }
-
-    function render(){
-      const item=CONTENT[index];
-      category.textContent=item.category;
-      title.textContent=item.title;
-      description.textContent=item.description;
-      document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===index));
-    }
-
-    function setMode(v){
-      interactive=v;
-      modeText.textContent=v ? "Control remoto conectado" : "Modo automático";
-      statusText.innerHTML=v
-        ? "El visitante está controlando esta pantalla."
-        : 'Siguiente contenido en <b id="autoCounter">10</b> s';
-    }
-
-    function applyCommand(cmd){
-      if(!cmd || cmd.id===lastCommandId) return;
-      lastCommandId=cmd.id;
-
-      if(cmd.type==="connect"){
-        setMode(true);
-      }
-      if(cmd.type==="next"){
-        setMode(true);
-        index=(index+1)%CONTENT.length;
-        render();
-      }
-      if(cmd.type==="prev"){
-        setMode(true);
-        index=(index-1+CONTENT.length)%CONTENT.length;
-        render();
-      }
-      if(cmd.type==="page"){
-        setMode(true);
-        index=Math.max(0,Math.min(CONTENT.length-1,Number(cmd.index)||0));
-        render();
-      }
-      if(cmd.type==="home" || cmd.type==="end" || cmd.type==="timeout"){
-        index=0;
-        autoSeconds=10;
-        setMode(false);
-        render();
-      }
-    }
-
-    window.addEventListener("storage",(e)=>{
-      if(e.key==="dce_display_command" && e.newValue){
-        try{applyCommand(JSON.parse(e.newValue))}catch{}
-      }
-    });
-
-    buildDots();
+  function goTo(i){
+    index=(i+CONTENT.length)%CONTENT.length;
     render();
-
-    setInterval(()=>{
-      const now=new Date();
-      document.getElementById("clock").textContent=now.toLocaleTimeString("es-MX",{hour:"2-digit",minute:"2-digit"});
-      document.getElementById("date").textContent=now.toLocaleDateString("es-MX",{weekday:"long",day:"numeric",month:"long"});
-
-      if(!interactive){
-        autoSeconds--;
-        const counter=document.getElementById("autoCounter");
-        if(counter) counter.textContent=autoSeconds;
-        if(autoSeconds<=0){
-          autoSeconds=10;
-          index=(index+1)%CONTENT.length;
-          render();
-        }
-      }
-    },1000);
   }
 
-  /* CONTROL */
-  if (isControl) {
-    const SESSION_SECONDS=120;
-    let active=false;
-    let remaining=SESSION_SECONDS;
-    let currentIndex=0;
+  function handleCommand(cmd){
+    if(!cmd)return;
+    setInteractive(true);
+    clearTimeout(sessionTimeout);
 
-    const connectPanel=document.getElementById("connectPanel");
-    const remotePanel=document.getElementById("remotePanel");
-    const timer=document.getElementById("timer");
-    const timerBar=document.getElementById("timerBar");
-    const contentList=document.getElementById("contentList");
-
-    function formatTime(s){
-      const m=Math.floor(s/60);
-      const sec=s%60;
-      return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+    if(cmd.type==="next") goTo(index+1);
+    if(cmd.type==="prev") goTo(index-1);
+    if(cmd.type==="page") goTo(Number(cmd.index)||0);
+    if(cmd.type==="home") goTo(0);
+    if(cmd.type==="end"){
+      goTo(0);
+      setInteractive(false);
+      return;
     }
 
-    function updateTimer(){
-      timer.textContent=formatTime(remaining);
-      timerBar.style.width=((remaining/SESSION_SECONDS)*100)+"%";
-    }
-
-    function resetTimer(){
-      remaining=SESSION_SECONDS;
-      updateTimer();
-    }
-
-    function markActive(i){
-      currentIndex=i;
-      document.querySelectorAll(".content-btn").forEach((b,n)=>b.classList.toggle("active",n===i));
-    }
-
-    CONTENT.forEach((item,i)=>{
-      const b=document.createElement("button");
-      b.className="content-btn";
-      b.innerHTML="<strong>"+item.category+"</strong><span>"+item.title+"</span>";
-      b.addEventListener("click",()=>{
-        if(!active)return;
-        markActive(i);
-        sendCommand("page",{index:i});
-        resetTimer();
-      });
-      contentList.appendChild(b);
-    });
-
-    document.getElementById("connectBtn").addEventListener("click",()=>{
-      active=true;
-      connectPanel.classList.add("hidden");
-      remotePanel.classList.remove("hidden");
-      markActive(0);
-      resetTimer();
-      sendCommand("connect");
-    });
-
-    document.getElementById("nextBtn").addEventListener("click",()=>{
-      if(!active)return;
-      currentIndex=(currentIndex+1)%CONTENT.length;
-      markActive(currentIndex);
-      sendCommand("next");
-      resetTimer();
-    });
-
-    document.getElementById("prevBtn").addEventListener("click",()=>{
-      if(!active)return;
-      currentIndex=(currentIndex-1+CONTENT.length)%CONTENT.length;
-      markActive(currentIndex);
-      sendCommand("prev");
-      resetTimer();
-    });
-
-    document.getElementById("homeBtn").addEventListener("click",()=>{
-      if(!active)return;
-      sendCommand("home");
-      active=false;
-      connectPanel.classList.remove("hidden");
-      remotePanel.classList.add("hidden");
-    });
-
-    document.getElementById("endBtn").addEventListener("click",()=>{
-      if(!active)return;
-      sendCommand("end");
-      active=false;
-      connectPanel.classList.remove("hidden");
-      remotePanel.classList.add("hidden");
-    });
-
-    updateTimer();
-
-    setInterval(()=>{
-      if(!active)return;
-      remaining--;
-      updateTimer();
-      if(remaining<=0){
-        sendCommand("timeout");
-        active=false;
-        connectPanel.classList.remove("hidden");
-        remotePanel.classList.add("hidden");
-      }
-    },1000);
+    sessionTimeout=setTimeout(()=>{
+      goTo(0);
+      setInteractive(false);
+    },120000);
   }
+
+  // Fallback demo entre pestañas del MISMO navegador.
+  window.addEventListener("storage",e=>{
+    if(e.key==="dce_command" && e.newValue){
+      try{handleCommand(JSON.parse(e.newValue))}catch{}
+    }
+  });
+
+  // Supabase Realtime opcional, sin archivos externos.
+  async function initRealtime(){
+    if(!SUPABASE_URL || !SUPABASE_ANON_KEY) return;
+    try {
+      const { createClient } = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
+      const supabase=createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+      const channel=supabase.channel("display-"+DISPLAY_ID);
+      channel.on("broadcast",{event:"command"},payload=>handleCommand(payload.payload));
+      await channel.subscribe();
+    } catch(err) {
+      console.warn("Realtime no disponible:",err);
+    }
+  }
+
+  render();
+  initRealtime();
+
+  setInterval(()=>{
+    const now=new Date();
+    $("clock").textContent=now.toLocaleTimeString("es-MX",{hour:"2-digit",minute:"2-digit"});
+    $("date").textContent=now.toLocaleDateString("es-MX",{weekday:"long",day:"numeric",month:"long"});
+    if(!interactive){
+      autoSeconds--;
+      const el=document.getElementById("countdown");
+      if(el) el.textContent=autoSeconds;
+      if(autoSeconds<=0){
+        autoSeconds=12;
+        goTo(index+1);
+      }
+    }
+  },1000);
 })();
 </script>
 </body>
